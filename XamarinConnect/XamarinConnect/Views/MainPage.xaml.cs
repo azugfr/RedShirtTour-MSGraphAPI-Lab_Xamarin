@@ -23,7 +23,11 @@ namespace XamarinConnect.Views
 
         private async Task ExecuteNavigateToEvent(Event eventItem)
         {
-            throw new NotImplementedException();
+            var EventSelection = new EventDetail(eventItem);
+
+            //GroupSelected.SelectedItem = null;
+
+            await Navigation.PushAsync(EventSelection);
         }
 
         protected override void OnAppearing()
@@ -36,7 +40,7 @@ namespace XamarinConnect.Views
 
         private void OnNavigateToToSignInAuthExecuted(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //Navigation.PushAsync(new QuestionPage());
         }
 
         protected override void OnViewModelPropertyChanged(string propertyName = null)

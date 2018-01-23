@@ -52,6 +52,8 @@
     <Compile Include="Models\EventGraphType.cs" />
     <Compile Include="Services\GroupsService.cs" />
     <Compile Include="Services\IGroupsService.cs" />
+    <Compile Include="Services\EventsService.cs" />
+    <Compile Include="Services\IEventsService.cs" />
     <Compile Include="Commands\IReverseAsyncCommand.cs" />
     <Compile Include="Commands\IReverseCommand.cs" />
     <Compile Include="Commands\ISyncCommand.cs" />
@@ -62,6 +64,10 @@
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EventDetail.xaml.cs">
+      <DependentUpon>EventDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\EventDetailViewModel.cs" />
     <Compile Include="Models\ResultsModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
   </ItemGroup>
@@ -118,6 +124,10 @@
     <EmbeddedResource Include="Views\MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EventDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

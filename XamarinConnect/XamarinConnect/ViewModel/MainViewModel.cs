@@ -16,6 +16,7 @@ namespace XamarinConnect.ViewModel
         private GraphServiceClient GraphServiceClient { get; set; }
         private readonly IAuthenticationService _authenticationService;
         private readonly IGroupsService _groupsService;
+        private readonly IEventsService _eventsService;
 
         private Event _eventSelected;
         public Event EventSelected
@@ -61,10 +62,11 @@ namespace XamarinConnect.ViewModel
 
 
 
-        public MainViewModel(IAuthenticationService authenticationService, IGroupsService groupsService)
+        public MainViewModel(IAuthenticationService authenticationService, IGroupsService groupsService, IEventsService eventsService)
         {
             _authenticationService = authenticationService;
             _groupsService = groupsService;
+            _eventsService = eventsService;
             NavigateToSignInAuthCommand = new SyncCommand(ExecuteSignInSignOut);
             NavigateToSignInAuth = new ReverseCommand(null);
             SelectEventCommand = new AsyncCommand(ExecuteSelectEvent);

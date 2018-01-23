@@ -10,6 +10,15 @@ using Xamarin.Forms;
 
 namespace XamarinConnect.Services
 {
+    public class MyHttpHandler : HttpClientHandler
+    {
+        protected async override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            var response = await base.SendAsync(request, cancellationToken);
+            return response;
+        }
+    }
+
     public class AuthenticationService : IAuthenticationService
     {
         private const string Url = "https://graph.microsoft.com/v1.0";
@@ -59,7 +68,6 @@ namespace XamarinConnect.Services
             }
             if (Expiration <= DateTimeOffset.UtcNow.AddMinutes(5))
             {
-
                 AuthenticationResult authResult = await App.IdentityClientApp.AcquireTokenAsync(App.Scopes, App.UiParent);
 
 
