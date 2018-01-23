@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<local:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamarinConnect"
+             xmlns:vm="clr-namespace:XamarinConnect.ViewModel;assembly=XamarinConnect"
+             x:Class="XamarinConnect.Views.MainPage"
+             x:TypeArguments="vm:MainViewModel"
+            Title="Graph Connect !">
+    <ContentPage.ToolbarItems>
+    <ToolbarItem x:Name="SignInOutBtn" Order="Primary" Text="{Binding SignBtn}" Priority="0" Command="{Binding NavigateToSignInAuthCommand}"/>
+    </ContentPage.ToolbarItems> 
+    <StackLayout Padding="10,10,10,25">
+      <Label Text="Red Shirt Dev Tour" FontSize="Medium" VerticalOptions="Start" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+      <StackLayout Orientation="Vertical" Padding="5,10" VerticalOptions="CenterAndExpand">
+        <Label HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" x:Name="InfoText" />
+        <Label x:Name="EmailAddress" IsVisible="False" Text="{Binding User.UserPrincipalName}"  />
+<!--        <Button HorizontalOptions="Center" IsVisible="False" x:Name="MailButton" Text="send mail" Clicked="MailButton_Click" />-->
+      </StackLayout>
+        <ListView x:Name="EventsView"
+            ItemsSource="{Binding Events}" 
+            ItemSelected="ListView_ItemSelected"
+            SelectedItem="{Binding EventSelected}" >
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <TextCell Text="{Binding Subject}" />
+              </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</local:BaseContentPage>
