@@ -50,6 +50,8 @@
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="BaseContentPage.cs" />
     <Compile Include="Models\EventGraphType.cs" />
+    <Compile Include="Services\GroupsService.cs" />
+    <Compile Include="Services\IGroupsService.cs" />
     <Compile Include="Commands\IReverseAsyncCommand.cs" />
     <Compile Include="Commands\IReverseCommand.cs" />
     <Compile Include="Commands\ISyncCommand.cs" />

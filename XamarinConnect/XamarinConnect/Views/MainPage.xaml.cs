@@ -17,6 +17,13 @@ namespace XamarinConnect.Views
         public MainPage() : base()
         {
             InitializeComponent();
+            ViewModel.NavigateToEventCommand = new ReverseAsyncCommand<Event>(this.ExecuteNavigateToEvent);
+
+        }
+
+        private async Task ExecuteNavigateToEvent(Event eventItem)
+        {
+            throw new NotImplementedException();
         }
 
         protected override void OnAppearing()
@@ -29,7 +36,7 @@ namespace XamarinConnect.Views
 
         private void OnNavigateToToSignInAuthExecuted(object sender, EventArgs e)
         {
-            //Navigation.PushAsync(new QuestionPage());
+            throw new NotImplementedException();
         }
 
         protected override void OnViewModelPropertyChanged(string propertyName = null)
@@ -46,6 +53,11 @@ namespace XamarinConnect.Views
         private void Connected()
         {
             EmailAddress.IsVisible = ViewModel.IsConnected;
+        }
+
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            ViewModel.SelectEventCommand?.ExecuteAsync();
         }
 
         protected override void OnDisappearing()

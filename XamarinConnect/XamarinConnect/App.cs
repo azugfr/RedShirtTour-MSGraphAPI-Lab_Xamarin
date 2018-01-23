@@ -13,7 +13,7 @@ namespace XamarinConnect
         public static PublicClientApplication IdentityClientApp;
         public static string ClientID = "<Application id>";
         public static string RedirectUri = "msal" + ClientID + "://auth";
-        public static string[] Scopes = { "User.Read" };
+        public static string[] Scopes = { "User.Read", "Group.Read.All" };
         public static string Username = string.Empty;
         public static string UserEmail = string.Empty;
 
@@ -30,6 +30,7 @@ namespace XamarinConnect
         {
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<IAuthenticationService, AuthenticationService>();
+            SimpleIoc.Default.Register<IGroupsService, GroupsService>();
         }
 
         protected override void OnStart()
