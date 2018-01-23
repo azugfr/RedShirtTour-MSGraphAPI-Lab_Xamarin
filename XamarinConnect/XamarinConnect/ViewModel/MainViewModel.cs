@@ -16,23 +16,6 @@ namespace XamarinConnect.ViewModel
         private GraphServiceClient GraphServiceClient { get; set; }
         private readonly IAuthenticationService _authenticationService;
 
-        private Event _eventSelected;
-        public Event EventSelected
-        {
-            get => _eventSelected;
-            set => Set(ref _eventSelected, value);
-        }
-
-        public IAsyncCommand SelectEventCommand { get; }
-        public IReverseAsyncCommand<Event> NavigateToEventCommand { get; set; }
-
-        private List<Event> _events;
-        public List<Event> Events
-        {
-            get => _events;
-            private set => Set(ref _events, value);
-        }
-
         private User _user;
         public User User
         {
@@ -52,7 +35,6 @@ namespace XamarinConnect.ViewModel
 
         }
 
-
         public string SignBtn
         {
             get => IsConnected ? "SignOut" : "SignIn";
@@ -65,15 +47,6 @@ namespace XamarinConnect.ViewModel
             _authenticationService = authenticationService;
             NavigateToSignInAuthCommand = new SyncCommand(ExecuteSignInSignOut);
             NavigateToSignInAuth = new ReverseCommand(null);
-            SelectEventCommand = new AsyncCommand(ExecuteSelectEvent);
-        }
-
-        private async Task ExecuteSelectEvent()
-        {
-            if (EventSelected != null)
-            {
-                await NavigateToEventCommand?.ExecuteAsync(EventSelected);
-            }
         }
 
         public bool IsBusy
@@ -119,13 +92,11 @@ namespace XamarinConnect.ViewModel
             {
                 //TODO catch ex
             }
-            //NavigateToSignInAuth.Execute(null);
         }
 
         public void SignOut()
         {
             _authenticationService.SignOut();
-            Events = null;
             User = null;
             IsConnected = false;
         }
