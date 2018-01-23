@@ -17,7 +17,23 @@ namespace XamarinConnect.Services
 
         public async Task<List<ResultsItem>> GetMyEventsAsync()
         {
-            throw new NotImplementedException();
+            GraphServiceClient graphClient = _authenticationService.GetAuthenticatedClient();
+            List<ResultsItem> items = new List<ResultsItem>();
+
+            IUserEventsCollectionPage events = await graphClient.Me.Events.Request().GetAsync();
+
+            if (events?.Count > 0)
+            {
+                foreach (Event current in events)
+                {
+                    items.Add(new ResultsItem
+                    {
+                        Display = current.Subject,
+                        Id = current.Id
+                    });
+                }
+            }
+            return items;
         }
     }
 }
