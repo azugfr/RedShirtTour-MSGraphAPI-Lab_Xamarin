@@ -29,8 +29,10 @@ namespace XamarinConnect
         private void InitializeIoc()
         {
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<EventDetailViewModel>();
             SimpleIoc.Default.Register<IAuthenticationService, AuthenticationService>();
             SimpleIoc.Default.Register<IGroupsService, GroupsService>();
+            SimpleIoc.Default.Register<IEventsService, EventsService>();
         }
 
         protected override void OnStart()
